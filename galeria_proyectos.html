@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Galería de Proyectos | DECO NICE BOUTIQUE</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700&amp;family=Libre+Franklin:wght@400;500;700&amp;family=Metrophobic:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Theme Configuration -->
+    <script
+        id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-fixed": "#291618", secondary: "#72585a", "on-tertiary-container": "#373530", "surface-tint": "#7f5257", "on-tertiary": "#ffffff", "error-container": "#ffdad6", "surface-variant": "#ffdad9", "surface-container-high": "#ffe1e1", "surface-container-low": "#fff0f0", "on-secondary-container": "#785e60", outline: "#837374", "on-error-container": "#93000a", "surface-dim": "#ffcece", "surface-bright": "#fff8f7", "primary-container": "#c58f95", "surface-container-lowest": "#ffffff", "on-secondary": "#ffffff", "on-primary-fixed-variant": "#653b40", tertiary: "#615e59", "on-secondary-fixed-variant": "#594142", "on-background": "#301314", "secondary-fixed": "#fedadc", "on-tertiary-fixed": "#1d1b17", "inverse-on-surface": "#ffedec", "primary-fixed-dim": "#f2b8be", "tertiary-fixed": "#e7e2db", "on-primary-fixed": "#321116", "inverse-primary": "#f2b8be", "on-surface-variant": "#514344", "on-surface": "#301314", "secondary-container": "#fedadc", "surface-container": "#ffe9e8", background: "#fff8f7", "tertiary-container": "#a29d97", "primary-fixed": "#ffd9dc", "on-error": "#ffffff", "tertiary-fixed-dim": "#cbc6bf", "secondary-fixed-dim": "#e0bec0", primary: "#7f5257", "on-tertiary-fixed-variant": "#494641", "inverse-surface": "#492728", "on-primary": "#ffffff", "on-primary-container": "#50292f", "outline-variant": "#d5c2c2", error: "#ba1a1a", "surface-container-highest": "#ffdad9", surface: "#fff8f7" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, fontFamily: { display: ["Bodoni Moda"], headline: ["Bodoni Moda"], body: ["Libre Franklin"], label: ["Metrophobic"] }, fontSize: {} } } };</script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .masonry-grid {
+                column-count: 4;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+
+        .project-overlay {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(to top, rgba(130, 81, 85, 0.95) 0%, rgba(130, 81, 85, 0.1) 100%);
+            backdrop-filter: blur(4px);
+            z-index: 20;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card .img-container img {
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease-in-out;
+        }
+
+        .project-card:hover .img-container>img:first-child {
+            transform: scale(1.05);
+        }
+
+        .glass-nav {
+            background: rgba(255, 248, 247, 0.85);
+            backdrop-filter: blur(16px);
+        }
+
+        /* Modal Transitions */
+        #project-modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #project-modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #project-modal:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Auto-sliding preview animation */
+        @keyframes slidePreview {
+
+            0%,
+            20% {
+                opacity: 1;
+            }
+
+            25%,
+            95% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .preview-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+        }
+
+        .project-card:hover .preview-container .preview-slide {
+            animation: slidePreview 6s infinite;
+        }
+
+        .preview-container .preview-slide:nth-child(1) {
+            animation-delay: 0s;
+            opacity: 1;
+        }
+
+        .project-card:hover .preview-container .preview-slide:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .project-card:hover .preview-container .preview-slide:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        .project-card:hover .preview-container .preview-slide:nth-child(4) {
+            animation-delay: 6s;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body selection:bg-primary/20">
+    <!-- Top Navigation Bar -->
+    <header class="bg-surface/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+            <a class="flex items-center gap-3 transition-transform duration-200 hover:scale-105" href="index.html"><img
+                    alt="Deco Nice Boutique" class="h-10 w-auto object-contain rounded-lg shadow-sm"
+                    src="image/logodeconice.png" /><span
+                    class="font-headline text-2xl text-primary font-bold tracking-tight">Deco Nice</span></a>
+            <nav class="hidden md:flex gap-10">
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="index.html">Inicio</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="catalogo.html">Catálogo</a>
+                <a class="font-label text-sm uppercase tracking-widest text-primary border-b border-primary pb-1 font-bold"
+                    href="galeria_proyectos.html">Proyectos</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="cobertura.html">Cobertura</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="contacto.html">Contacto</a>
+            </nav>
+            <a class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3 font-label text-sm uppercase tracking-widest hover:bg-primary-container transition-all duration-300 rounded-xl shadow-lg"
+                href="cotizar.html">
+                Cotizar
+            </a>
+            <button aria-label="Abrir menú" class="md:hidden text-on-surface p-2 focus:outline-none">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <header class="pt-48 pb-24 px-6 md:px-16 max-w-7xl mx-auto text-center">
+        <h1 class="font-display text-5xl md:text-7xl italic text-primary mb-8 leading-tight">Galería de Proyectos</h1>
+        <p class="font-body text-lg text-on-surface-variant max-w-2xl mx-auto font-light leading-relaxed">
+            Una curaduría de espacios exclusivos donde el diseño arquitectónico se encuentra con la sofisticación del
+            detalle.
+        </p>
+    </header>
+    <!-- Main Editorial Grid -->
+    <main class="px-6 md:px-16 max-w-[1600px] mx-auto pb-32">
+        <div class="masonry-grid" id="gallery-grid">
+            <!-- Project Groups injected via JS -->
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-low border-t border-outline-variant/30 py-24 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-16 max-w-7xl mx-auto">
+            <!-- Brand & Logo -->
+            <div class="col-span-1 md:col-span-2">
+                <a class="flex items-center gap-3 mb-6" href="index.html">
+                    <img alt="Deco Nice Boutique" class="h-10 w-auto object-contain rounded-lg shadow-sm"
+                        src="image/logodeconice.png" />
+                    <span class="font-headline text-2xl font-bold" style="color: rgb(127, 82, 87);">Deco Nice</span>
+                </a>
+                <p class="text-on-surface-variant font-body text-sm leading-relaxed mb-8 max-w-sm">Diseño que trasciende
+                    el tiempo y las tendencias. Exclusividad en cada detalle de su hogar.</p>
+                <div class="flex gap-5 mt-4">
+                    <a class="flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-300"
+                        href="https://www.facebook.com/share/1DEXhJYu3q/" target="_blank" rel="noopener">
+                        <span class="material-symbols-outlined text-xl">facebook</span>
+                        <span class="font-body text-sm uppercase tracking-widest">Facebook</span>
+                    </a>
+                    <a class="flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-300"
+                        href="https://www.instagram.com/deconiceperu" target="_blank" rel="noopener">
+                        <span class="material-symbols-outlined text-xl">photo_camera</span>
+                        <span class="font-body text-sm uppercase tracking-widest">Instagram</span>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-label text-xs uppercase tracking-widest text-primary font-bold">Explorar</h4>
+                <a class="text-on-surface-variant text-sm font-body hover:text-primary hover:translate-x-1 transition-all duration-300"
+                    href="catalogo.html">Catálogo</a>
+                <a class="text-primary text-sm font-body font-semibold hover:translate-x-1 transition-transform duration-300"
+                    href="galeria_proyectos.html">Proyectos</a>
+                <a class="text-on-surface-variant text-sm font-body hover:text-primary hover:translate-x-1 transition-all duration-300"
+                    href="cobertura.html">Cobertura</a>
+                <a class="text-on-surface-variant text-sm font-body hover:text-primary hover:translate-x-1 transition-all duration-300"
+                    href="contacto.html">Contacto</a>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-label text-xs uppercase tracking-widest text-primary font-bold">Servicios</h4>
+                <a class="text-on-surface-variant text-sm font-body hover:text-primary hover:translate-x-1 transition-all duration-300"
+                    href="cotizar.html">Cotizar Ahora</a>
+                <a class="text-on-surface-variant text-sm font-body hover:text-primary hover:translate-x-1 transition-all duration-300"
+                    href="contacto.html">Showroom</a>
+                <a class="text-on-surface-variant text-sm font-body hover:text-primary hover:translate-x-1 transition-all duration-300"
+                    href="cotizar.html">Asesoría a Domicilio</a>
+            </div>
+        </div>
+        <div class="mt-16 pt-8 border-t border-outline-variant/10 text-center">
+            <p class="text-on-surface-variant font-label text-[10px] tracking-[0.4em] opacity-60">© 2026 DECO NICE
+                BOUTIQUE. EXCLUSIVIDAD Y DISEÑO.</p>
+        </div>
+    </footer>
+    <!-- Modal Overlay for Carousels -->
+    <div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md hidden"
+        id="project-modal">
+        <div class="absolute inset-0 cursor-pointer" onclick="closeModal()"></div>
+        <button
+            class="absolute top-6 right-6 md:top-10 md:right-10 z-[110] text-primary hover:scale-110 transition-transform bg-surface/50 rounded-full p-2"
+            onclick="closeModal()">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <div
+            class="relative z-[105] w-full max-w-6xl px-4 md:px-0 mx-auto flex flex-col md:flex-row items-center gap-8 h-[870px]">
+            <div class="flex-1 w-full h-full relative overflow-hidden rounded-xl shadow-2xl flex items-center">
+                <button
+                    class="absolute left-4 text-primary hover:scale-110 transition-transform bg-surface/80 rounded-full p-3 shadow-sm z-30"
+                    onclick="prevSlide()">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div class="w-full h-full relative" id="modal-carousel-container">
+                    <img alt="Office Blinds 1"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 opacity-100 z-20"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAklPNCFyO2hgsKRRiR1hqENbxuY1Yrm_5V5ZqnchKp_ZAGwNa_KCT95Xv71qZ-2o_YczcbSFwC0EPDtswPxpfqiNCO19WgQzZbkMrmA2tA2wYdp3GSC3azFXAqc8qsYPK646RR5QtwhdDfmCxjRWySDtQDVHNQDp_FXuK61-uuV9t9M0aLVH5HKQDtsmOnoFVD4HkfVVvJ1Pdp6f6zly3kmrqc9BaV60mriS6488COzwjROq16d01Xshpw01pswtTc_5Erxgm2GdTK" />
+                    <img alt="Office Blinds 2"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 opacity-0 z-10"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLiHygRFwetc3nzTzGrpQlLYoNyipxFOZqEWji-kKyHLowsnbN1RxxdJQvf5cnTmWQB07a_N27IuKbhDaOreOrypR3-JVEADpQe-bmrZ64Cfqm-V9MC8qAYZ9ajQAvSxiaivpWdSq20Np9sxQOPx9nFtmJZaDDdlivCwDBA7EmsFFZbb-nTHeMQZlMcHS2Mcd-0eUNMDh5M-ajtMzsl57Cx6c5f-5svalY8_K_4homGg1W6Hwje5DSY51cXsXGuqRU809DU8SBn6V" />
+                    <img alt="Office Blinds 3"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 opacity-0 z-10"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNHEU8ND1Tf9YMMdGPIA-SMVfscXU6a0DdNVr5Gdi9UnAHjf2hm_eA3NgycPRVEBbIK41K43Ez3JjzPURJKKrKhNsSdW-e-BYmkvnydxnCrL4DWCqXacPlD_AMa133teq779vVzUPePcURU685YKFuCp5Hc0-u4drlrSmhCHuJp2Hksdn-OYBQ1_D6PCYaHDhfU3prc1xGyOIcxivcYEAb3luh65oH1gH_pmHNvwXErIG2yYo9gyQ53wKaKZzYDXySl_CLuA9LXdFU" />
+                    <img alt="Office Blinds 4"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 opacity-0 z-10"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMMukCsN1J438n5iruwSsitHIBk_qhNSGTAxD_f7TpPz4B7-oKfZsiKQT39gEK3wO5SBHDiKC-7ipnvi04Mnicq0iBndjuBRoMMgA7yWqVUj15FBrsBZ8CmQez0owBY-ad00TMdwTn6fNuzRsYltWax7x4nPWlPHqFnG33GRj6x9tKzXz4s5Xg5i-W3NZlZ9PAMv5kxJQ0FjJjP_h5zEJyNtcHNs5JtkmXtapDZVnvT-i8MMSq5ss6r7ZF82i7_mmJAiZiGgbFclCV" />
+                </div>
+                <button
+                    class="absolute right-4 text-primary hover:scale-110 transition-transform bg-surface/80 rounded-full p-3 shadow-sm z-30"
+                    onclick="nextSlide()">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+                <div class="absolute bottom-6 left-0 w-full flex justify-center gap-2 z-30" id="modal-indicators">
+                    <button class="w-2 h-2 rounded-full transition-all duration-300 bg-primary w-6"
+                        onclick="goToSlide(0)"></button>
+                    <button
+                        class="w-2 h-2 rounded-full transition-all duration-300 bg-outline-variant hover:bg-primary/50"
+                        onclick="goToSlide(1)"></button>
+                    <button
+                        class="w-2 h-2 rounded-full transition-all duration-300 bg-outline-variant hover:bg-primary/50"
+                        onclick="goToSlide(2)"></button>
+                    <button
+                        class="w-2 h-2 rounded-full transition-all duration-300 bg-outline-variant hover:bg-primary/50"
+                        onclick="goToSlide(3)"></button>
+                </div>
+            </div>
+            <div
+                class="w-full md:w-1/3 bg-surface p-8 rounded-2xl shadow-xl flex flex-col h-auto md:max-h-[819px] overflow-y-auto">
+                <span class="font-label text-[10px] tracking-[0.4em] uppercase mb-2 text-primary-fixed-dim font-bold"
+                    id="modal-category">Corporativo</span>
+                <h3 class="font-headline text-4xl text-primary mb-6" id="modal-title">Office Blinds</h3>
+                <div class="h-[1px] w-12 bg-outline-variant mb-6"></div>
+                <p class="font-body text-on-surface-variant text-sm leading-relaxed mb-8" id="modal-description">
+                    Soluciones eficientes para entornos profesionales, combinando estética minimalista con un excelente
+                    control del deslumbramiento y eficiencia energética.</p>
+                <div class="mt-auto pt-6 border-t border-outline-variant/30 flex flex-col gap-3">
+                    <div class="flex items-center gap-3 text-sm font-body text-on-surface-variant">
+                        <span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
+                        <span class="" id="modal-tech-date">Instalación Corporativa 2026</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm font-body text-on-surface-variant">
+                        <span class="material-symbols-outlined text-primary text-xl">verified</span>
+                        <span class="" id="modal-tech-materials">Sistemas Screen Anti-reflejo</span>
+                    </div>
+                    <button
+                        class="mt-4 w-full bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-[0.2em] rounded-full hover:bg-primary/90 hover:shadow-lg transition-all duration-300 transform active:scale-95 uppercase flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-lg">request_quote</span>
+                        Cotizar este proyecto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const projectGroups = [
+            {
+                id: 'group-1',
+                title: 'Persianas de Madera',
+                category: 'Cortinaje',
+                description: 'Intervención integral utilizando sistemas motorizados Somfy con madera natural texturizada para un control lumínico sofisticado y una estética cálida.',
+                date: 'Instalación realizada en 2026',
+                materials: 'Maderas Finas y Motorización Premium',
+                images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuA3Gvqx4IUJREf8VVS2QjNRJVZAp1Cf6mvtJTy26je87KUGDNaDfEZQDklxYJC6s7o4asSBs_C4OLCfElAghBGCxzGNhRK6tjKB1YZ9CMcYPBUbEXFQEn26124IFRLx1L4vK0e-72fC9omlB9NDgseLSDUjKpXCMSbXcyySWfrgKPIR2hrVAmLc7t62GGJj2gkbkzwNNamnw6TMYHI_Dlx3klF4CJkuV07L23iZZLHbH6iAcb9-GjKRWTj7y02Irgqk0N6bI1WD9be1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuArHrFFmoEUxNgkwT0mBmGMM6Pd8JakaO2JVNF2goV0UkL69w1WDoVfhlZ5p1NDNe--Ln7LBH2ZDpS8mA8EnV7HCYHk-5ZIaYLyhpZHkTOjsTbUk653-ekLzMUvod4Lckzr7tv6SuPZ1maoqUlnQL_-mJYWaGUZ7t41FyG5lMdARmxwPmigWJUOncD9CzlTHECk5jpSQhlGjAFcB5_u3HSjvDTqyK5Z_8CLOKEX73Ao36l7rHI7nP9vYmL-qMQulT2VFy5fniZAnCSB', 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8TUAvHwG5q_KVgUcBwlEVJqMxu90oKAr1GffPu9gupXCve7DIsDP3nawyJcvVe7ZmOeiA6YLhtNCm899_5YRAjT1c0c5eKCCYbpu53k3JbMsCo1lGlsMSTVqAG_IQbejz96K5xwQQUbjchJX6ed6SPVT5M4odG7LDMmFSWirFl56GweJ9VvZKcZk1xmzqQzEFTtC6-KrMdW0ktAMj0UKQ8lR7Rc-_ai6XPEMJsquRXKuBQ2CaFY5PY3P6rvSRw65vB9elhFc11unR']
+            },
+            {
+                id: 'group-2',
+                title: 'Cortinas Ripplefold',
+                category: 'Elegancia',
+                description: 'Diseño fluido y elegante con pliegues perfectos, aportando un toque contemporáneo y gran control de la privacidad mediante tejidos opacos de alta calidad.',
+                date: 'Instalación realizada en 2023',
+                materials: 'Textiles Europeos',
+                images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuDbpk7_pslWUgK4K_IX7QndsIL0YP53rfQRmKzP6lXabdm23SXYyb0yILGQQYUQ9j3cGKTh2oyqXo_Gdn773VPD8XoEGjx54ltHAP28PwXMVW-8q8mZOinSAZYmptht-YZJfVMZEILikZ6_HKVbad0koPt1d9CciFo9xN7IWzjd3jBzjYtF4DWc4FTtRyHa4Bvpy_5A28JWCME-ZAAR4r1jRZW2TkAZGvQCVTzjQhikbGuYR6cd0_hDorrmlUGum0pr0R8posWCQEpC', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAcbdnF7dQuEa4jHgMa9tQCQ_uxicDWDOcYV8fnyGJ5aHXeUw6eD3nE9J0zf2F8lI8vgch9Y5UH6xXu_ng4vRMmdOxRhlA9lK4_oHkq7g6L0ccOIHZQdAGx17060siIaSYSkZjk-frGmg6t0G_aGBYr0wcx2ifGjE5_BEDhogYPn-01ryt2FXPRIYvgUCdIgYTBFsYfP2NEVi7gnqG9001TGR9VfcAT92Jvh4sOoLufHFv8hipE59tZKwrpSEIOTTMFrmuqgdcHwJud', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvE5JLVGPKOJS4nEhLVwIXQB-7yjIRaDXfUKKGV1CPatpDwhVjvJHtZ6-iSD-BqAJ_2RI-qvD6R03kPYiDwg63adHIDqeUDXLiS5fL2Tla9pP1vrmC7uZyqhyfNGGfjZsqsKkFMJ_YvynJCwcqilheKpiUOm0oQXG0gUlj8MZYXxvSpVD19xRzQLKJ6vQRFTgsnJOk-imeH1NGrDbEs5NiAMHLOiTH-1jDn7HoMr51pl24WuvygPGVrJl9ljSmqBuPJjubn8yThwoP']
+            },
+            {
+                id: 'group-3',
+                title: 'Roller Dúo/Zebra',
+                category: 'Moderno',
+                description: 'La versatilidad en su máxima expresión. Sistema de doble tejido que permite una gestión dinámica de la luz natural, ideal para espacios modernos y funcionales.',
+                date: 'Diseño continuo',
+                materials: 'Componentes de Aluminio y Telas Técnicas',
+                images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuBf5dJGudm_bZFodsjknK2MforS05AQWhOvWPHZW522TRqsn8FtktjC3zDoQdiHsUplNpz15T9dGvx03D9IkDiVm77Zw__hBEeJc0Vv3oxVz9zMYtLzH0f35ZsVL4N6tFt0zLDsRf9xbiHNiQHG8s05vvR6ha358vIfjgbSHOLQCiZeFV8g1jA3yLlOOonqKFs7iGFVipRwGaRyf7vk39Ujp0lLnV-KHTypexXxxBAuw7r0no0wXbmSEI16usjWfHxwcd7K_Adksxe3', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDL4NdJgCOCMhVHqzPQuQVoPUNotjPmxgmbFMdkOeeSSFRB-K0HrOb7P8fBfRuC88-8GQjTyzCSqguz1nvv3XM07b_kjGGHNPY90wUgMT2fpCvssI7m6iVp3L7xJFIIQ0H4V9slrUQMuqLkdcZnH3iXZqUKFP1xT0eI7NTOiXYTtze_VmE6e6WZ6tMMudiBABR_9aR_iKNnsPcrEWUAVq322LbZPOPVQ8Svro_vuMHYmT0vB9RrEPPbYGHZVXsR69kivoH-SeZ-MJ6p', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBu4rWHoo-MG3C7icP5zU4mU0WIsVOsXdPBeJwIlmQKzjS3FxwLGAvbZClVw3ZjEoD3r8DEyDQuBMs53CYgjBdfnrXwq_oissy8mzZ4GszIxZ0K5Dtq9u8FC9fYB4RFzCr0To2quKMSZTYXHtjo48PieQeLoc6UGk5jmzFP6co9-yBeetn0lNsEcdhDrkQcWYNBxvw6ABqQuyZpKoISH-nIpTTrOfwKefMkerxnXs3xi_fp_qSGnYtv_H1ceNc98dp2ykBP0die6wyU']
+            },
+            {
+                id: 'group-4',
+                title: 'Office Blinds',
+                category: 'Corporativo',
+                description: 'Soluciones eficientes para entornos profesionales, combinando estética minimalista con un excelente control del deslumbramiento y eficiencia energética.',
+                date: 'Instalación Corporativa 2026',
+                materials: 'Sistemas Screen Anti-reflejo',
+                images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuAklPNCFyO2hgsKRRiR1hqENbxuY1Yrm_5V5ZqnchKp_ZAGwNa_KCT95Xv71qZ-2o_YczcbSFwC0EPDtswPxpfqiNCO19WgQzZbkMrmA2tA2wYdp3GSC3azFXAqc8qsYPK646RR5QtwhdDfmCxjRWySDtQDVHNQDp_FXuK61-uuV9t9M0aLVH5HKQDtsmOnoFVD4HkfVVvJ1Pdp6f6zly3kmrqc9BaV60mriS6488COzwjROq16d01Xshpw01pswtTc_5Erxgm2GdTK', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvLiHygRFwetc3nzTzGrpQlLYoNyipxFOZqEWji-kKyHLowsnbN1RxxdJQvf5cnTmWQB07a_N27IuKbhDaOreOrypR3-JVEADpQe-bmrZ64Cfqm-V9MC8qAYZ9ajQAvSxiaivpWdSq20Np9sxQOPx9nFtmJZaDDdlivCwDBA7EmsFFZbb-nTHeMQZlMcHS2Mcd-0eUNMDh5M-ajtMzsl57Cx6c5f-5svalY8_K_4homGg1W6Hwje5DSY51cXsXGuqRU809DU8SBn6V', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBNHEU8ND1Tf9YMMdGPIA-SMVfscXU6a0DdNVr5Gdi9UnAHjf2hm_eA3NgycPRVEBbIK41K43Ez3JjzPURJKKrKhNsSdW-e-BYmkvnydxnCrL4DWCqXacPlD_AMa133teq779vVzUPePcURU685YKFuCp5Hc0-u4drlrSmhCHuJp2Hksdn-OYBQ1_D6PCYaHDhfU3prc1xGyOIcxivcYEAb3luh65oH1gH_pmHNvwXErIG2yYo9gyQ53wKaKZzYDXySl_CLuA9LXdFU', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCMMukCsN1J438n5iruwSsitHIBk_qhNSGTAxD_f7TpPz4B7-oKfZsiKQT39gEK3wO5SBHDiKC-7ipnvi04Mnicq0iBndjuBRoMMgA7yWqVUj15FBrsBZ8CmQez0owBY-ad00TMdwTn6fNuzRsYltWax7x4nPWlPHqFnG33GRj6x9tKzXz4s5Xg5i-W3NZlZ9PAMv5kxJQ0FjJjP_h5zEJyNtcHNs5JtkmXtapDZVnvT-i8MMSq5ss6r7ZF82i7_mmJAiZiGgbFclCV']
+            },
+            {
+                id: 'group-5',
+                title: 'Sofa Variants',
+                category: 'Mobiliario',
+                description: 'Piezas de mobiliario a medida que fusionan confort supremo con líneas limpias, tapizadas en textiles seleccionados por su durabilidad y tacto exquisito.',
+                date: 'Diseño Exclusivo',
+                materials: 'Tapicería de Alta Gama',
+                images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuA4y0hCkNfG1pbOPmrcnK8wNmdABIB9iTLSVhEaQ2NlWGDQk6h5Bd1NuIcHZWy8qeyzaciVRf5eoW4oqW3h8jrpzspsU2EgORLwctZt3EtcpQiA5kbPlc9NNHDOMy7t0GP8Jtht8QoU5iud01ocyV44FMDAf3OCqevkfTb8cUexoqYcW3oLeIySt11g8DtO5oHzJjbDSEv38_BMru9CDPH2Of45pLiIIb5YpS43Xfbdpyn0PfEu_uikj_MQfS6QjzLkTzLBZP6NyMma', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDPJxaqrXRCT7kNGLuCkmXPZ8-LkUMLVunFoE_CMiTwexbOE-8jp__irGeVa4aF9DVlkn17g-beUAo5v4kQmI_eh3sqFEryP_hyhcqtzFpWT8auPfFbx3P8I5QwPqYkQsU6zwrXm6SMcnVijYb4zaxmvytRJvnH65BoxrrkckcGBrnLHV_u5OHsa9M5V2nnFgn9edkMt18-iTGN0uhNW7OQpuHbHlHzZl7eK3O_3fBjq-x_oWwEGa7gRXbxKvEvHH_MW7apUbqryrQA', 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3JOkzt9GEOdASek_qXObIwjKjPCfva9VwF_jycnrUXk4mv5s4iFrYjM_9Bc6GR0ariSuF2m2ICCaw-pl7_pnKGwzbLCtm4Ot2RqCnh2UjOOGxbCZ6uWMHub0JPvcIbhrQGy69SXTV5laQaEjd4pHZgwxlwa5ju1d9-CpY4A-CbgpQnA-dgVN5dn0Kp04SNb06gFK4WOFY7mqzSvfWfkiwyZEsSjdtmYbwx6zsLYLDqu9znKSMJbzDq4REmvzrcv9BQANum177YnZm', 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3JOkzt9GEOdASek_qXObIwjKjPCfva9VwF_jycnrUXk4mv5s4iFrYjM_9Bc6GR0ariSuF2m2ICCaw-pl7_pnKGwzbLCtm4Ot2RqCnh2UjOOGxbCZ6uWMHub0JPvcIbhrQGy69SXTV5laQaEjd4pHZgwxlwa5ju1d9-CpY4A-CbgpQnA-dgVN5dn0Kp04SNb06gFK4WOFY7mqzSvfWfkiwyZEsSjdtmYbwx6zsLYLDqu9znKSMJbzDq4REmvzrcv9BQANum177YnZm']
+            },
+            {
+                id: 'group-6',
+                title: 'Sliding Doors',
+                category: 'Estructura',
+                description: 'Sistemas de puertas correderas que optimizan el espacio, ofreciendo transiciones fluidas entre ambientes con herrajes invisibles de alta tecnología.',
+                date: 'Instalación 2023',
+                materials: 'Madera Roble y Acero Inoxidable',
+                images: ['https://lh3.googleusercontent.com/aida-public/AB6AXuAi6T-Je_P3f7ZkpOtRjMiUY4-70_GI0V0J-sdrTWW8b6yYBhsk561VYrvWseIfGm5xYn3j6RdUKb-cVdsyR_50llLKZjT6DE2YCqFnAYGroxhSjONsFwVFUzmcbiee_uUcGhD1Rq6eWAXDoZpoPpRv0g7NG54SlzvodExDiVhLs--svFc3QCVBUIOoQrwFn9DfwKbl2Qzr6bVFMaiOI7rpPCaTRst78hqj6bzPL9tWPVKla4J0pTqqPQprJJ4sSSpI6SrwW-DEih0N', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDLZj6AIcLG0d4Cfyc-ejIXanqDRtIVuYVb5gLhxZ-BqyLY0yoY0ng_EAIeQa5Up7qNlUayBPQlax6MJmwDdP0HJ1hKnYo6_ZJbfSDNfKaK2WxECa1y14OlE7IPWgFdRlk-N6nEMAKY45-C8hvRQla2F81imk-vHWvRVwPGNMG-evi2o7U0Y3yTjCFrdaKteMQxLwqMM5txiODf3AKnjPOBiWPw-HzxNFRkANVjulWcSlrfPhxLbSNoMV2z1PSXndzX8mqZhFkTNrbk', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAi6T-Je_P3f7ZkpOtRjMiUY4-70_GI0V0J-sdrTWW8b6yYBhsk561VYrvWseIfGm5xYn3j6RdUKb-cVdsyR_50llLKZjT6DE2YCqFnAYGroxhSjONsFwVFUzmcbiee_uUcGhD1Rq6eWAXDoZpoPpRv0g7NG54SlzvodExDiVhLs--svFc3QCVBUIOoQrwFn9DfwKbl2Qzr6bVFMaiOI7rpPCaTRst78hqj6bzPL9tWPVKla4J0pTqqPQprJJ4sSSpI6SrwW-DEih0N']
+            }
+        ];
+
+        // Mixed with remaining standalone images to maintain gallery feel
+        const remainingImages = [
+            { id: 'https://lh3.googleusercontent.com/aida-public/AB6AXuByapywxq4D07x1j2OC1bvxpQucvcjQDi2dTxzPUppByg83YJxPlnNf9_l9UXtvPGymPlfLYAUGVc2TtSrm2k24_B16yQEdx6l6cj81FQ4o-0W8BVp1rOgY9C7YPUR09gephZaLL-a8xk5FlX4qgqe4KnS0lWdzvrvAli_-UPrpvJesOkHkY-gf_YNOygB86YR12TuaOQwZAgtxelSU-fqrrXPRDnwYvvCUdomCZVEP-dq8dwhPvQQYCPSeVq_qBlN8meiDoLP-PIdb', title: 'Textura Champán', category: 'Interiores' },
+            { id: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAdgi6u6VBM-Mez4cNPgh77L6vMCdRejdCpO1eHZi1U9-7zX6Vqa6EhaPQa4pwO95cU-nE7FREm3trnMEvIzBrH2o0Pn1Hr_Y2vKC1yQ7k6DSM0SWv3B2jUhHd1-vG_3GNYb6SB9LBkokGxzYYJ8GHWma0aAqTEX_GR8zkpdrzKQ5v7RdpIuPpL-rb9cveLayJO59wA1J38Nwm4GLjk0TuHKqlu2bR1yMMzC8UnGbxRorgR-Skj_Umt2WXs5ZXo3eA0kSsCDR-gy0IH', title: 'Salón de Terciopelo', category: 'Luxury' },
+            { id: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCSLAryRb7jcVvWts9nuwBjZPdH-lSpkXirXetD4x4LhVnx4gBjcRgbytO6vcfH5YrCeVbKB5F1wiygOYCR5IZt64JNPmDBBNOmGXe1p7SdvqD_rFSdeinjthCyYHS41eMVnBesKRXA62JXAi0IQCKblMkDqveZpQW6s8ZU9GLqxDMT3gRvLpCqsCJyeeaJlCdLuSrzd8jvZOtALDdjSrICIlHq-u64DjkzBt0nPEsK2s_X9oLKFhxnOebAPtmQXvet7I1x39LWQOe', title: 'Plisados Cobrizos', category: 'Textiles' },
+            { id: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDq9f_mgI-HVqqRNM8R5Y3g5TENAqNgQ1ucz1UOWnxeGd1nVxNP3-weib34ptyxkY-XlI0_Rj_YVK7SNbvMf9p8ACD4pEuSK5gLbBgpIRCGpmYio-tOlEHbVCmAdds0eYa2_6gJDTVh8FeINn2lr5ZRH4CV9XUKNCQBHokcjIvyvQSr5rWXwJMSFN8ixLS5i7sPtqULpJNKHhibeTshufN3PwlRBsMowalrlCm0vs6rnl6t7gsB0aJxEUdx3DXvU70r__NqXCJbMHK9', title: 'Drapería Profunda', category: 'Dormitorio' }
+        ];
+
+        const galleryGrid = document.getElementById('gallery-grid');
+
+        // Render groups
+        projectGroups.forEach((group, index) => {
+            const groupHtml = `
+                <div class="masonry-item project-card group relative overflow-hidden rounded-2xl shadow-md border border-outline-variant/10 bg-surface cursor-pointer" onclick="openModal('${group.id}')">
+                    <div class="img-container relative w-full h-auto min-h-[300px] preview-container">
+                        ${group.images.map((img, i) => `
+                            <img alt="${group.title} vista ${i + 1}" class="preview-slide ${i === 0 ? 'relative' : ''}" src="${img}" style="object-fit: cover; width: 100%; height: 100%;"/>
+                        `).join('')}
+                    </div>
+                    <div class="absolute top-4 right-4 z-30 bg-surface/80 backdrop-blur text-primary px-3 py-1 rounded-full text-[10px] font-label font-bold tracking-widest flex items-center gap-1 shadow-sm">
+                        <span class="material-symbols-outlined text-[14px]">photo_library</span>
+                        ${group.images.length}
+                    </div>
+                    <div class="project-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-8 text-on-primary">
+                        <span class="font-label text-[10px] tracking-[0.4em] uppercase mb-2 text-primary-fixed-dim font-bold">${group.category}</span>
+                        <h3 class="font-headline text-2xl mb-1">${group.title}</h3>
+                        <p class="font-body text-sm opacity-90 italic font-light">Diseño exclusivo Deco Nice.</p>
+                        <div class="mt-4 flex gap-2 items-center">
+                            <span class="h-[1px] w-8 bg-on-primary/40"></span>
+                            <span class="font-label text-[9px] tracking-widest uppercase flex items-center gap-1">Ver Galería <span class="material-symbols-outlined text-[12px]">open_in_new</span></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            galleryGrid.insertAdjacentHTML('beforeend', groupHtml);
+        });
+
+        // Render remaining single images
+        remainingImages.forEach((img, index) => {
+            const singleHtml = `
+                <div class="masonry-item project-card group relative overflow-hidden rounded-2xl shadow-md border border-outline-variant/10 bg-surface">
+                    <div class="img-container relative w-full h-auto">
+                         <img alt="${img.title}" class="w-full h-auto block" src="${img.id}"/>
+                    </div>
+                    <div class="project-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-8 text-on-primary">
+                        <span class="font-label text-[10px] tracking-[0.4em] uppercase mb-2 text-primary-fixed-dim font-bold">${img.category}</span>
+                        <h3 class="font-headline text-2xl mb-1">${img.title}</h3>
+                        <p class="font-body text-sm opacity-90 italic font-light">Diseño exclusivo Deco Nice.</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="h-[1px] w-8 bg-on-primary/40 my-auto"></span>
+                            <span class="font-label text-[9px] tracking-widest uppercase">Ver Detalle</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            galleryGrid.insertAdjacentHTML('beforeend', singleHtml);
+        });
+
+        // Modal Logic
+        let currentModalGroup = null;
+        let currentSlideIndex = 0;
+
+        function openModal(groupId) {
+            currentModalGroup = projectGroups.find(g => g.id === groupId);
+            if (!currentModalGroup) return;
+
+            currentSlideIndex = 0;
+            updateModalContent();
+
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            currentModalGroup = null;
+        }
+
+        function updateModalContent() {
+            if (!currentModalGroup) return;
+
+            document.getElementById('modal-title').textContent = currentModalGroup.title;
+            document.getElementById('modal-category').textContent = currentModalGroup.category;
+            document.getElementById('modal-description').textContent = currentModalGroup.description;
+            document.getElementById('modal-tech-date').textContent = currentModalGroup.date;
+            document.getElementById('modal-tech-materials').textContent = currentModalGroup.materials;
+
+            const container = document.getElementById('modal-carousel-container');
+            container.innerHTML = currentModalGroup.images.map((img, i) => `
+                <img src="${img}" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${i === currentSlideIndex ? 'opacity-100 z-20' : 'opacity-0 z-10'}" alt="${currentModalGroup.title} ${i + 1}">
+            `).join('');
+
+            const indicators = document.getElementById('modal-indicators');
+            indicators.innerHTML = currentModalGroup.images.map((_, i) => `
+                <button onclick="goToSlide(${i})" class="w-2 h-2 rounded-full transition-all duration-300 ${i === currentSlideIndex ? 'bg-primary w-6' : 'bg-outline-variant hover:bg-primary/50'}"></button>
+            `).join('');
+        }
+
+        function nextSlide() {
+            if (!currentModalGroup) return;
+            currentSlideIndex = (currentSlideIndex + 1) % currentModalGroup.images.length;
+            updateModalContent();
+        }
+
+        function prevSlide() {
+            if (!currentModalGroup) return;
+            currentSlideIndex = (currentSlideIndex - 1 + currentModalGroup.images.length) % currentModalGroup.images.length;
+            updateModalContent();
+        }
+
+        function goToSlide(index) {
+            if (!currentModalGroup) return;
+            currentSlideIndex = index;
+            updateModalContent();
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.masonry-item');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(40px)';
+                item.style.transition = 'opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                item.style.transitionDelay = `${(index % 6) * 100}ms`;
+                observer.observe(item);
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

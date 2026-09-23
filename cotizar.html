@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cotizar - Deco Nice</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700&amp;family=Libre+Franklin:wght@400;500;700&amp;family=Metrophobic:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script
+        id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed": "#1d1b17", surface: "#fff8f7", "inverse-on-surface": "#ffedec", "on-surface-variant": "#514344", "tertiary-fixed-dim": "#cbc6bf", "secondary-fixed": "#fedadc", "on-secondary-container": "#785e60", "primary-fixed": "#ffd9dc", "surface-variant": "#ffdad9", "primary-container": "#c58f95", tertiary: "#615e59", "surface-dim": "#ffcece", "on-error": "#ffffff", "on-background": "#301314", background: "#fff8f7", "on-secondary-fixed": "#291618", "surface-container-highest": "#ffdad9", "secondary-fixed-dim": "#e0bec0", secondary: "#72585a", "inverse-surface": "#492728", "on-tertiary-fixed-variant": "#494641", "on-secondary-fixed-variant": "#594142", "error-container": "#ffdad6", error: "#ba1a1a", "outline-variant": "#d5c2c2", "on-surface": "#301314", "inverse-primary": "#f2b8be", "on-primary-fixed-variant": "#653b40", "surface-container-lowest": "#ffffff", "surface-container": "#ffe9e8", primary: "#7f5257", "on-primary-container": "#50292f", "on-error-container": "#93000a", "surface-container-high": "#ffe1e1", "on-primary": "#ffffff", "on-tertiary-container": "#373530", "on-tertiary": "#ffffff", "surface-bright": "#fff8f7", "secondary-container": "#fedadc", "surface-tint": "#7f5257", "primary-fixed-dim": "#f2b8be", "tertiary-fixed": "#e7e2db", "tertiary-container": "#a29d97", "on-secondary": "#ffffff", outline: "#837374", "on-primary-fixed": "#321116", "surface-container-low": "#fff0f0" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, spacing: {}, fontFamily: { headline: ["Bodoni Moda"], display: ["Bodoni Moda"], body: ["Libre Franklin"], label: ["Metrophobic"] }, fontSize: {} } } };</script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .step-transition {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .step-hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .step-active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .custom-radio:checked+label {
+            border-color: #825155;
+            background-color: #fff8f7;
+            box-shadow: 0 10px 30px -10px rgba(130, 81, 85, 0.15);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body overflow-x-hidden selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+    <!-- TopNavBar Shared Component -->
+    <header class="bg-surface/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+            <a class="flex items-center gap-3 transition-transform duration-200 hover:scale-105" href="index.html"><img
+                    alt="Deco Nice Boutique" class="h-10 w-auto object-contain rounded-lg shadow-sm"
+                    src="image/logodeconice.png" /><span
+                    class="font-headline text-2xl text-primary font-bold tracking-tight">Deco Nice</span></a>
+            <nav class="hidden md:flex gap-10">
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="index.html">Inicio</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="catalogo.html">Catálogo</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="galeria_proyectos.html">Proyectos</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="cobertura.html">Cobertura</a>
+                <a class="font-label text-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="contacto.html">Contacto</a>
+            </nav>
+            <a href="cotizar.html"
+                class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3 font-label text-sm uppercase tracking-widest hover:bg-primary-container transition-all duration-300 rounded-xl shadow-lg">
+                Cotizar
+            </a>
+            <button aria-label="Abrir menú" class="md:hidden text-on-surface focus:outline-none">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+    </header>
+    <main class="min-h-screen pt-32 pb-20 px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header Section -->
+            <div class="text-center mb-16">
+                <h1 class="font-headline text-5xl text-primary mb-6">Solicita tu Presupuesto</h1>
+                <div class="w-12 h-0.5 bg-tertiary-container mx-auto mb-6"></div>
+                <p class="text-secondary max-w-xl mx-auto font-body text-lg">Transforma tus espacios con la elegancia de
+                    Deco Nice. Completa el formulario y recibe una cotización personalizada en menos de 24 horas.</p>
+            </div>
+            <!-- Multi-step Form Container -->
+            <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 md:p-16 shadow-lg">
+                <!-- Stepper Progress -->
+                <div class="flex items-center justify-between mb-20 relative">
+                    <div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant/40 -z-10"></div>
+                    <div class="flex flex-col items-center gap-4 bg-surface-container-lowest px-4">
+                        <div class="w-12 h-12 rounded-xl border border-primary bg-primary text-on-primary flex items-center justify-center font-headline text-2xl transition-all duration-500 shadow-lg shadow-primary/20"
+                            id="step-indicator-1">1</div>
+                        <span class="font-label text-xs text-primary uppercase tracking-widest">Categoría</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 bg-surface-container-lowest px-4">
+                        <div class="w-12 h-12 rounded-xl border border-outline-variant bg-surface text-secondary flex items-center justify-center font-headline text-2xl transition-all duration-500"
+                            id="step-indicator-2">2</div>
+                        <span class="font-label text-xs text-secondary uppercase tracking-widest">Medidas</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 bg-surface-container-lowest px-4">
+                        <div class="w-12 h-12 rounded-xl border border-outline-variant bg-surface text-secondary flex items-center justify-center font-headline text-2xl transition-all duration-500"
+                            id="step-indicator-3">3</div>
+                        <span class="font-label text-xs text-secondary uppercase tracking-widest">Contacto</span>
+                    </div>
+                </div>
+                <form id="quote-form">
+                    <!-- CSRF Token -->
+                    <input type="hidden" name="csrf_token" id="csrf_token">
+                    <!-- Honeypot -->
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
+                    <!-- Step 1: Category Selection -->
+                    <div class="step-transition step-active" id="step-1">
+                        <h2 class="font-headline text-3xl mb-12 text-center text-on-surface">¿Qué proyecto tienes en
+                            mente?</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="relative group">
+                                <input checked="" class="hidden custom-radio" id="cat-curtains" name="categoria"
+                                    type="radio" value="Cortinas y Persianas" />
+                                <label
+                                    class="flex flex-col items-center p-10 border border-outline-variant/50 cursor-pointer hover:border-primary transition-all duration-300 rounded-xl text-center shadow-sm hover:shadow-lg"
+                                    for="cat-curtains">
+                                    <span
+                                        class="material-symbols-outlined text-5xl mb-6 text-primary group-hover:scale-110 transition-transform duration-500">curtains</span>
+                                    <span class="font-label text-xs text-on-surface uppercase tracking-widest">Cortinas
+                                        &amp; Persianas</span>
+                                </label>
+                            </div>
+                            <div class="relative group">
+                                <input class="hidden custom-radio" id="cat-wallpaper" name="categoria" type="radio"
+                                    value="Papel Tapiz" />
+                                <label
+                                    class="flex flex-col items-center p-10 border border-outline-variant/50 cursor-pointer hover:border-primary transition-all duration-300 rounded-xl text-center shadow-sm hover:shadow-lg"
+                                    for="cat-wallpaper">
+                                    <span
+                                        class="material-symbols-outlined text-5xl mb-6 text-primary group-hover:scale-110 transition-transform duration-500">wallpaper</span>
+                                    <span class="font-label text-xs text-on-surface uppercase tracking-widest">Papel
+                                        Tapiz</span>
+                                </label>
+                            </div>
+                            <div class="relative group">
+                                <input class="hidden custom-radio" id="cat-motorization" name="categoria" type="radio"
+                                    value="Motorización" />
+                                <label
+                                    class="flex flex-col items-center p-10 border border-outline-variant/50 cursor-pointer hover:border-primary transition-all duration-300 rounded-xl text-center shadow-sm hover:shadow-lg"
+                                    for="cat-motorization">
+                                    <span
+                                        class="material-symbols-outlined text-5xl mb-6 text-primary group-hover:scale-110 transition-transform duration-500">settings_remote</span>
+                                    <span
+                                        class="font-label text-xs text-on-surface uppercase tracking-widest">Motorización</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-16 flex justify-center">
+                            <button
+                                class="bg-primary text-on-primary px-12 py-4 font-label text-sm tracking-widest uppercase flex items-center gap-3 hover:bg-on-primary-container hover:px-14 transition-all duration-300 active:scale-95 rounded-xl shadow-lg"
+                                onclick="goToStep(2)" type="button">
+                                Siguiente <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Step 2: Measurements -->
+                    <div class="step-transition step-hidden" id="step-2">
+                        <h2 class="font-headline text-3xl mb-12 text-center text-on-surface">Detalles del espacio</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                            <div class="space-y-10">
+                                <div class="relative group">
+                                    <label
+                                        class="font-label text-xs text-secondary block mb-3 uppercase tracking-widest">Ancho
+                                        (cm)</label>
+                                    <input
+                                        class="w-full bg-transparent border-0 border-b border-outline-variant p-3 focus:ring-0 focus:border-primary placeholder:text-outline-variant/60 transition-all duration-300 font-body text-base"
+                                        id="ancho" name="ancho" placeholder="Ej. 240" type="number" />
+                                    <div
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-focus-within:w-full">
+                                    </div>
+                                </div>
+                                <div class="relative group">
+                                    <label
+                                        class="font-label text-xs text-secondary block mb-3 uppercase tracking-widest">Alto
+                                        (cm)</label>
+                                    <input
+                                        class="w-full bg-transparent border-0 border-b border-outline-variant p-3 focus:ring-0 focus:border-primary placeholder:text-outline-variant/60 transition-all duration-300 font-body text-base"
+                                        id="alto" name="alto" placeholder="Ej. 260" type="number" />
+                                    <div
+                                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-focus-within:w-full">
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-surface-container-low p-6 flex items-center justify-center relative overflow-hidden h-72 border border-outline-variant/20 group rounded-xl shadow-lg">
+                                <div class="absolute inset-0 bg-cover bg-center opacity-30 grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-1000"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMrLSVtMiCYmam7craVGX2_DtgYdIg1E7FtPhHlBFfyQFlGeb16MSGjApaRUgVqSUGtRsBKgODVvs1i3g6WtyxZaln6DWnP8fCoPbSxvRwA5xfPOIuSdCuBwtIAwdgAwWz4ha4GzgUd3rfVJcHFPZj3mRHIpz2Ve9urzEf8MoB-iSv8b0BpQDyfShyhTYh8NjnldZQanxF9FNzC80oPy7kZwGfdKXV4akc-DR5m2nKSO3GCwK5hzoMQOPAOTz7uxvoGeC4y2JGhV3y')">
+                                </div>
+                                <div class="relative z-10 text-center">
+                                    <div class="bg-white/80 backdrop-blur-sm p-6 inline-block rounded-xl">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-5xl mb-3 block">straighten</span>
+                                        <p class="font-label text-[10px] text-secondary uppercase tracking-tighter">
+                                            Referencia técnica</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-16 flex justify-between items-center">
+                            <button
+                                class="text-secondary px-6 py-4 font-label text-sm tracking-widest uppercase hover:text-primary transition-all duration-300 flex items-center gap-2"
+                                onclick="goToStep(1)" type="button">
+                                <span class="material-symbols-outlined text-lg">arrow_back</span> Volver
+                            </button>
+                            <button
+                                class="bg-primary text-on-primary px-12 py-4 font-label text-sm tracking-widest uppercase flex items-center gap-3 hover:bg-on-primary-container hover:px-14 transition-all duration-300 active:scale-95 rounded-xl shadow-lg"
+                                onclick="goToStep(3)" type="button">
+                                Siguiente <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Step 3: Contact Info -->
+                    <div class="step-transition step-hidden" id="step-3">
+                        <h2 class="font-headline text-3xl mb-12 text-center text-on-surface">Información de contacto
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div class="col-span-2 group relative">
+                                <label
+                                    class="font-label text-xs text-secondary block mb-2 uppercase tracking-widest">Nombre
+                                    Completo</label>
+                                <input
+                                    class="w-full bg-transparent border-0 border-b border-outline-variant p-3 focus:ring-0 focus:border-primary placeholder:text-outline-variant/60 font-body text-base"
+                                    id="nombre" name="nombre" placeholder="Tu nombre..." required type="text" />
+                                <div
+                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-focus-within:w-full">
+                                </div>
+                            </div>
+                            <div class="group relative">
+                                <label
+                                    class="font-label text-xs text-secondary block mb-2 uppercase tracking-widest">Correo
+                                    Electrónico</label>
+                                <input
+                                    class="w-full bg-transparent border-0 border-b border-outline-variant p-3 focus:ring-0 focus:border-primary placeholder:text-outline-variant/60 font-body text-base"
+                                    id="email" name="email" placeholder="email@ejemplo.com" type="email" />
+                                <div
+                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-focus-within:w-full">
+                                </div>
+                            </div>
+                            <div class="group relative">
+                                <label
+                                    class="font-label text-xs text-secondary block mb-2 uppercase tracking-widest">Teléfono</label>
+                                <input
+                                    class="w-full bg-transparent border-0 border-b border-outline-variant p-3 focus:ring-0 focus:border-primary placeholder:text-outline-variant/60 font-body text-base"
+                                    id="celular" name="celular" placeholder="+51 999 999 999" required type="tel" />
+                                <div
+                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-focus-within:w-full">
+                                </div>
+                            </div>
+                            <div class="col-span-2 group relative">
+                                <label
+                                    class="font-label text-xs text-secondary block mb-2 uppercase tracking-widest">Mensaje
+                                    adicional (Opcional)</label>
+                                <textarea
+                                    class="w-full bg-transparent border-0 border-b border-outline-variant p-3 focus:ring-0 focus:border-primary placeholder:text-outline-variant/60 resize-none font-body text-base"
+                                    id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre tu proyecto..."
+                                    rows="3"></textarea>
+                                <div
+                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-focus-within:w-full">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-16 flex justify-between items-center">
+                            <button
+                                class="text-secondary px-6 py-4 font-label text-sm tracking-widest uppercase hover:text-primary transition-all duration-300 flex items-center gap-2"
+                                onclick="goToStep(2)" type="button">
+                                <span class="material-symbols-outlined text-lg">arrow_back</span> Volver
+                            </button>
+                            <button
+                                class="bg-primary text-on-primary px-12 py-4 font-label text-sm tracking-widest uppercase hover:bg-on-primary-container transition-all duration-300 active:scale-95 shadow-lg shadow-primary/20 rounded-xl"
+                                type="submit">
+                                Enviar Cotización
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar Shared Component -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+        <a class="bg-primary text-on-primary rounded-xl p-4 shadow-lg hover:bg-on-primary-container hover:scale-110 transition-all active:scale-90 flex items-center justify-center"
+            href="#">
+            <span class="material-symbols-outlined">request_quote</span>
+        </a>
+    </div>
+    <!-- Footer Shared Component -->
+    <footer class="bg-surface-container-low border-t border-tertiary-container/20 py-20">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-3 mb-6"><img alt="Deco Nice Boutique"
+                        class="h-10 w-auto object-contain rounded-lg shadow-sm" src="image/logodeconice.png" /><span
+                        class="font-headline text-headline-sm text-primary font-bold">Deco Nice</span></div>
+                <p class="text-secondary font-body text-base leading-relaxed">Elegancia y distinción en cada rincón de
+                    tu hogar. Especialistas en diseño de interiores con acabados de lujo.</p>
+            </div>
+            <div>
+                <h4 class="font-label text-xs text-primary mb-8 uppercase tracking-widest">Explorar</h4>
+                <ul class="space-y-4">
+                    <li class=""><a
+                            class="text-secondary hover:text-tertiary-container transition-colors font-body text-base"
+                            href="#">Inicio</a></li>
+                    <li class=""><a
+                            class="text-secondary hover:text-tertiary-container transition-colors font-body text-base"
+                            href="#">Catálogo</a></li>
+                    <li class=""><a
+                            class="text-secondary hover:text-tertiary-container transition-colors font-body text-base"
+                            href="#">Proyectos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-label text-xs text-primary mb-8 uppercase tracking-widest">Soporte</h4>
+                <ul class="space-y-4">
+                    <li class=""><a
+                            class="text-secondary hover:text-tertiary-container transition-colors font-body text-base"
+                            href="#">Cobertura</a></li>
+                    <li class=""><a
+                            class="text-secondary hover:text-tertiary-container transition-colors font-body text-base"
+                            href="#">Contacto</a></li>
+                    <li class=""><a
+                            class="text-secondary hover:text-tertiary-container transition-colors font-body text-base"
+                            href="#">Libro de Reclamaciones</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-label text-xs text-primary mb-8 uppercase tracking-widest">Redes</h4>
+                <ul class="space-y-4">
+                    <li class=""><a
+                            class="text-secondary hover:text-primary transition-colors font-body text-base flex items-center gap-2"
+                            href="#"><span class="material-symbols-outlined text-lg text-primary">facebook</span> Deco
+                            Nice</a></li>
+                    <li class=""><a
+                            class="text-secondary hover:text-primary transition-colors font-body text-base flex items-center gap-2"
+                            href="#"><span class="material-symbols-outlined text-lg text-primary">photo_camera</span>
+                            Deco Nice</a></li>
+                    <li class=""><a
+                            class="text-secondary hover:text-primary transition-colors font-body text-base flex items-center gap-2"
+                            href="#"><span class="material-symbols-outlined text-lg text-primary">chat</span>
+                            WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-outline-variant/20 text-center text-on-surface-variant text-sm">
+            <p class="font-body text-base">© 2026 Deco Nice. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        function goToStep(stepNumber) {
+            const steps = [1, 2, 3];
+            steps.forEach(step => {
+                const element = document.getElementById(`step-${step}`);
+                const indicator = document.getElementById(`step-indicator-${step}`);
+                const indicatorText = indicator.nextElementSibling;
+
+                if (step === stepNumber) {
+                    element.classList.remove('step-hidden');
+                    element.classList.add('step-active');
+
+                    // Active indicator
+                    indicator.classList.remove('border-outline-variant', 'bg-surface', 'text-secondary', 'shadow-none');
+                    indicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'shadow-lg', 'shadow-primary/20');
+                    indicator.innerHTML = step;
+                    indicatorText.classList.remove('text-secondary');
+                    indicatorText.classList.add('text-primary');
+                } else {
+                    element.classList.add('step-hidden');
+                    element.classList.remove('step-active');
+
+                    if (step < stepNumber) {
+                        // Completed steps
+                        indicator.classList.remove('bg-surface', 'text-secondary', 'border-outline-variant');
+                        indicator.classList.add('bg-primary', 'text-on-primary', 'border-primary', 'shadow-none');
+                        indicator.innerHTML = '<span class="material-symbols-outlined text-lg">check</span>';
+                        indicatorText.classList.remove('text-secondary');
+                        indicatorText.classList.add('text-primary');
+                    } else {
+                        // Future steps
+                        indicator.classList.add('border-outline-variant', 'bg-surface', 'text-secondary');
+                        indicator.classList.remove('border-primary', 'bg-primary', 'text-on-primary', 'shadow-lg', 'shadow-primary/20');
+                        indicator.innerHTML = step;
+                        indicatorText.classList.add('text-secondary');
+                        indicatorText.classList.remove('text-primary');
+                    }
+                }
+            });
+
+            // Scroll to form top smoothly
+            const formTop = document.querySelector('#quote-form').getBoundingClientRect().top + window.pageYOffset - 150;
+            window.scrollTo({ top: formTop, behavior: 'smooth' });
+        }
+
+        const WHATSAPP_NUMBER = '51935531769'; // Número de Deco Nice (sin +)
+
+        // Obtener CSRF token al cargar
+        async function getCsrfToken() {
+            try {
+                const res = await fetch('api/get_csrf.php');
+                const data = await res.json();
+                document.getElementById('csrf_token').value = data.token || '';
+            } catch (e) {
+                console.warn('CSRF token no disponible');
+            }
+        }
+        getCsrfToken();
+
+        document.getElementById('quote-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Recoger datos del formulario
+            const nombre = document.getElementById('nombre').value.trim();
+            const celular = document.getElementById('celular').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const ancho = document.getElementById('ancho').value.trim();
+            const alto = document.getElementById('alto').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+            const categoria = document.querySelector('input[name="categoria"]:checked')?.value || 'No especificada';
+
+            if (!nombre || !celular) {
+                showToast('Por favor completa tu nombre y teléfono.', 'error');
+                return;
+            }
+
+            const btn = this.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            // Enviar datos al backend (FormData incluye csrf_token y honeypot automáticamente)
+            try {
+                const formData = new FormData(this);
+
+                const res = await fetch('api/cotizar.php', { method: 'POST', body: formData });
+                const data = await res.json();
+
+                if (data.success) {
+                    showToast('¡Cotización enviada! Redirigiendo a WhatsApp...');
+                } else {
+                    showToast(data.message || 'Error al enviar. Intenta de nuevo.', 'error');
+                    btn.disabled = false;
+                    btn.textContent = 'Enviar Cotización';
+                    return;
+                }
+            } catch (err) {
+                showToast('¡Solicitud recibida! Abriendo WhatsApp...');
+            }
+
+            // Armar y abrir mensaje de WhatsApp con datos del cliente
+            setTimeout(() => {
+                const waMsg = encodeURIComponent(
+                    `🎨 *Nueva Solicitud de Cotización - Deco Nice*\n\n` +
+                    `👤 *Nombre:* ${nombre}\n` +
+                    `📞 *Teléfono:* ${celular}\n` +
+                    `📧 *Email:* ${email || 'No especificado'}\n` +
+                    `🏠 *Categoría:* ${categoria}\n` +
+                    `📐 *Medidas:* Ancho ${ancho || '?'}cm × Alto ${alto || '?'}cm\n` +
+                    `💬 *Mensaje:* ${mensaje || 'Sin mensaje adicional'}\n\n` +
+                    `_Enviado desde deconiceperu.com_`
+                );
+                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`, '_blank');
+                location.reload();
+            }, 1800);
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

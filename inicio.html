@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es" style="">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DECO NICE | Cortinas &amp; Persianas de Lujo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700&amp;family=Libre+Franklin:wght@400;500;700&amp;family=Metrophobic:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#cbc6bf",
+                        "secondary-fixed-dim": "#e0bec0",
+                        "on-surface-variant": "#514344",
+                        "on-secondary-container": "#785e60",
+                        "on-tertiary-fixed": "#1d1b17",
+                        "on-surface": "#301314",
+                        "inverse-surface": "#492728",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#d5c2c2",
+                        "on-primary-fixed-variant": "#653b40",
+                        "surface-container-low": "#fff0f0",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#ffe9e8",
+                        "secondary-container": "#fedadc",
+                        "on-tertiary-container": "#373530",
+                        "inverse-primary": "#f2b8be",
+                        "tertiary": "#615e59",
+                        "surface-dim": "#ffcece",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ffedec",
+                        "tertiary-container": "#a29d97",
+                        "surface-variant": "#ffdad9",
+                        "on-secondary-fixed-variant": "#594142",
+                        "primary-fixed-dim": "#f2b8be",
+                        "tertiary-fixed": "#e7e2db",
+                        "on-error": "#ffffff",
+                        "background": "#fff8f7",
+                        "secondary-fixed": "#fedadc",
+                        "on-primary-container": "#50292f",
+                        "primary": "#7f5257",
+                        "primary-container": "#c58f95",
+                        "secondary": "#72585a",
+                        "primary-fixed": "#ffd9dc",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#837374",
+                        "on-background": "#301314",
+                        "surface-tint": "#7f5257",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#ffdad9",
+                        "on-secondary-fixed": "#291618",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#ffe1e1",
+                        "surface-bright": "#fff8f7",
+                        "surface": "#fff8f7",
+                        "on-tertiary-fixed-variant": "#494641",
+                        "on-primary-fixed": "#321116"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1.5rem",
+                        "gutter-grid": "1.5rem",
+                        "stack-sm": "0.75rem",
+                        "margin-edge": "2rem",
+                        "stack-xl": "5rem",
+                        "stack-lg": "3rem"
+                    },
+                    "fontFamily": {
+                        "body": ["Libre Franklin"],
+                        "headline": ["Bodoni Moda"],
+                        "display": ["Bodoni Moda"],
+                        "label": ["Metrophobic"],
+                        "body-lg": ["Libre Franklin"],
+                        "body-md": ["Libre Franklin"],
+                        "headline-sm": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "nav-item": ["Metrophobic"],
+                        "label-caps": ["Metrophobic"],
+                        "headline-md": ["Bodoni Moda"],
+                        "display-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "nav-item": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.15em", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 10px 40px rgba(130, 81, 85, 0.08);
+        }
+
+        @keyframes carouselFade {
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            33.33% {
+                opacity: 1;
+            }
+
+            43.33% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .carousel-item {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: carouselFade 15s infinite;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .carousel-item:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .carousel-item:nth-child(3) {
+            animation-delay: 10s;
+        }
+    </style>
+</head>
+
+<body class="text-on-background font-body antialiased selection:bg-primary-container/30 bg-surface" data-mode="connect">
+    <!-- TopNavBar (Shared Component) -->
+    <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-outline-variant/30 bg-surface/90 shadow-sm"
+        id="topNav">
+        <div class="max-w-7xl mx-auto px-margin-edge flex justify-between items-center h-20">
+            <a class="flex items-center gap-3 transition-transform duration-200 hover:scale-105" href="index.html"><img
+                    alt="Deco Nice Boutique" class="h-10 w-auto object-contain rounded-lg shadow-sm"
+                    src="image/logodeconice.png" /><span
+                    class="font-headline text-headline-md text-on-surface font-bold"><span
+                        style="color: rgb(125, 83, 88); font-size: 24px; letter-spacing: -1px;">Deco
+                        Nice</span></span></a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="font-nav-item text-nav-item uppercase tracking-widest text-primary border-b border-primary pb-1 font-bold"
+                    href="index.html">Inicio</a>
+                <a class="font-nav-item text-nav-item uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="catalogo.html">Catálogo</a>
+                <a class="font-nav-item text-nav-item uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="galeria_proyectos.html">Proyectos</a>
+                <a class="font-nav-item text-nav-item uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="cobertura.html">Cobertura</a>
+                <a class="font-nav-item text-nav-item uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-300"
+                    href="contacto.html">Contacto</a>
+            </div>
+            <div class="hidden md:block">
+                <a class="inline-flex items-center justify-center px-6 py-2.5 border border-primary bg-primary text-on-primary font-label-caps uppercase hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 rounded-xl shadow-md"
+                    href="cotizar.html">
+                    Cotizar
+                </a>
+            </div>
+            <button class="md:hidden text-on-surface p-2 focus:outline-none" aria-label="Abrir menú">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+    </nav>
+    <main>
+        <!-- Hero Section -->
+        <section
+            class="relative w-full min-h-[85vh] md:min-h-[921px] flex items-center justify-center overflow-hidden pt-20">
+            <div class="absolute inset-0 w-full h-full bg-on-background">
+                <div class="carousel-item bg-cover bg-center bg-no-repeat"
+                    style='background-image: url("image/portada/portada1.png");'></div>
+                <div class="carousel-item bg-cover bg-center bg-no-repeat"
+                    style='background-image: url("image/portada/portada2.png");'></div>
+                <div class="carousel-item bg-cover bg-center bg-no-repeat"
+                    style='background-image: url("image/portada/portada3.png");'></div>
+                <div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-on-background/60 via-transparent to-on-background/20">
+                </div>
+            </div>
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-margin-edge text-center flex flex-col items-center">
+                <h1 class="font-headline text-display-lg text-surface-bright mb-stack-md max-w-4xl drop-shadow-xl">
+                    Viste tus espacios con elegancia
+                </h1>
+                <p class="font-body text-body-lg text-surface-container-low mb-10 max-w-2xl font-light drop-shadow-md">
+                    Descubre nuestra exclusiva colección de cortinas y persianas de lujo. Confeccionadas a medida para
+                    transformar tu hogar en un refugio de sofisticación.
+                </p>
+                <a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-on-primary font-label-caps uppercase hover:bg-tertiary transition-all duration-300 hover:scale-[1.02] shadow-xl rounded-xl"
+                    href="#cotizar">Reservar cita</a>
+            </div>
+        </section>
+        <!-- Trust Badges -->
+        <section class="w-full bg-surface-container py-12 border-b border-outline-variant/20">
+            <div
+                class="max-w-7xl mx-auto px-margin-edge flex flex-wrap justify-center md:justify-between items-center gap-12">
+                <div class="flex items-center gap-5 group">
+                    <span class="material-symbols-outlined text-primary text-4xl">verified</span>
+                    <div>
+                        <p class="font-label-caps text-on-surface uppercase">7 Años</p>
+                        <p class="font-body text-sm text-on-surface-variant">De Experiencia</p>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-12 bg-outline-variant/40"></div>
+                <div class="flex items-center gap-5 group">
+                    <span class="material-symbols-outlined text-primary text-4xl">location_on</span>
+                    <div>
+                        <p class="font-label-caps text-on-surface uppercase">Cobertura</p>
+                        <p class="font-body text-sm text-on-surface-variant">A Nivel Nacional</p>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-12 bg-outline-variant/40"></div>
+                <div class="flex items-center gap-5 group">
+                    <span class="material-symbols-outlined text-primary text-4xl">workspace_premium</span>
+                    <div>
+                        <p class="font-label-caps text-on-surface uppercase">Garantía</p>
+                        <p class="font-body text-sm text-on-surface-variant">Calidad Asegurada</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section class="py-stack-xl px-margin-edge bg-surface">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5 lg:col-start-1">
+                    <span class="font-label-caps text-tertiary-container uppercase mb-4 block">Sobre Deco Nice</span>
+                    <h2 class="font-headline text-headline-lg text-on-surface mb-8">Artesanía en cada detalle.</h2>
+                    <p class="font-body text-on-surface-variant mb-6 text-justify">
+                        En Deco Nice, creemos que la luz natural es el elemento de diseño más importante. Nuestra misión
+                        es ayudarte a controlarla con gracia y estilo.
+                    </p>
+                    <p class="font-body text-on-surface-variant text-justify">
+                        Trabajamos con materiales de la más alta calidad, seleccionados minuciosamente para ofrecer
+                        soluciones duraderas que se integran perfectamente con la arquitectura interior de tu espacio,
+                        elevando la estética general a través de un lujo silencioso.
+                    </p>
+                    <p
+                        class="font-body text-on-surface-variant mt-6 italic border-l-4 border-primary pl-4 text-justify">
+                        <strong>Residencia Atrio:</strong> Majestuosidad y confort en espacios de techos altos, donde la
+                        automatización inteligente se fusiona con la luz natural.
+                    </p>
+                </div>
+                <div class="lg:col-span-6 lg:col-start-7 relative">
+                    <div class="aspect-[4/5] bg-surface-container relative z-10 shadow-lg rounded-xl overflow-hidden">
+                        <img alt="Residencia Atrio"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj4A4nO6dG4zaYynPub_oSvwvKLeyZRkyrWejgPNrkCKJpcL4JQGa4OUMY8mJPVZMJohUWgrrl5Wbq4RPBm9LIwUPL4aaMD1Sh7O9kw2FpAJHNFQ5W9kP5nbp9foHUJjJlSnsIH8hmwBPn4-XHcI095qFm82hucoDOrA4SjCVYW3TJnzpaYWsJLsm0lTWrDhI0MJbM59GTGwYvXyeEntPhtGMvdcEqRMovNYuOkKZzCnXGGJuZ4FDKUsFrLYWWwPVM9ZuLSVrQ7J0d" />
+                    </div>
+                    <div
+                        class="absolute -top-6 -right-6 bottom-6 left-6 border border-tertiary-container/30 z-0 hidden lg:block rounded-xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Grid -->
+        <section class="py-stack-xl bg-surface-container-low px-margin-edge">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="font-label-caps text-primary uppercase mb-4 block">Nuestras Soluciones</span>
+                    <h2 class="font-headline text-headline-lg text-on-surface">Colección Exclusiva</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
+                    <!-- Item 1 (Large) -->
+                    <div
+                        class="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-surface shadow-lg rounded-xl flex flex-col justify-end p-10">
+                        <img alt="Smart Curtains"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeUtPrdzVMrMppauxNdPgbjasMoy4HxSxt0pmh2bxmUgmbHZt46Z9SjLZXxEE8oxq3cBh3Z1I3Ld6UqgqWddiptapoiwkJabLh4_yHpRmAb4f9wogXdPB_CSjDLt4WK3ayyk1a-WyoLu2BlEBdsSNLE4hUz0REZES5yHG29nXb5br16EEjFj6S8Lgu4N4H15Bl3FDfELXHlwju1mhaFVHtWWYkmkSbDiWuuZUSrriTeOzTy0TBrl641XZnLxP4HupK6pa4AvLJj2uB" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent">
+                        </div>
+                        <div class="relative z-10">
+                            <span
+                                class="inline-block px-4 py-1.5 bg-primary text-on-primary font-label-caps text-[10px] uppercase mb-4 rounded-xl">Premium</span>
+                            <h3 class="font-headline text-headline-md text-on-primary mb-3">Roller Screen</h3>
+                            <p class="font-body text-surface-container-low max-w-md">Sofisticación técnica que
+                                transforma la luz en una caricia para tus ambientes, brindando privacidad con una
+                                transparencia sublime.</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div
+                        class="relative group overflow-hidden bg-surface shadow-lg rounded-xl p-8 flex flex-col justify-end">
+                        <img alt="Roller Duo"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuColZRtQY5IDx1YtSk7byLfBFiDdMaG7XBFCAk0f22IKDqcmqT8kzCDviMilo4IKPm-BKSf4v5oDSSnhffvPIOYoJ4UsKEAsmg55BuiXtWE6cI58y8RhjXjNRM5NORQjbtq0vqEx-cBvpy1m-9171jfkM3LawxVS6wZLKsksvYU6kZLKDoN8M7JHHU-W1sVJB2JBfTWJpHFozvrQTHzw6Od41A6qhiwJPTHcyrJsMVnR4ZyrXemh1f6Yb9iwFuDsRAVuDUVjK9gVKP4" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent"></div>
+                        <div class="relative z-10">
+                            <h3 class="font-headline text-headline-sm text-on-primary">Roller Dúo</h3>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div
+                        class="relative group overflow-hidden bg-surface-container shadow-lg rounded-xl p-8 flex flex-col items-center text-center justify-center border border-outline-variant/30">
+                        <span class="material-symbols-outlined text-5xl text-primary mb-4">blinds</span>
+                        <h3 class="font-headline text-headline-sm text-on-surface mb-2">Persianas de Madera</h3>
+                        <p class="font-body text-sm text-on-surface-variant">Calidez y control clásico.</p>
+                    </div>
+                    <!-- Bottom Bar -->
+                    <div
+                        class="md:col-span-3 h-[180px] relative group overflow-hidden shadow-lg rounded-xl flex items-center justify-between px-12 border-l-4 border-tertiary-container bg-surface">
+                        <div class="relative z-10 flex flex-col md:flex-row w-full justify-between items-center gap-8">
+                            <div>
+                                <h3 class="font-headline text-headline-sm text-on-surface mb-1">Asesoría Personalizada
+                                </h3>
+                                <p class="font-body text-on-surface-variant">Agendamos una visita a tu domicilio sin
+                                    costo adicional.</p>
+                            </div>
+                            <button
+                                class="shrink-0 px-8 py-3.5 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all font-label-caps uppercase rounded-xl">
+                                Solicitar Visita
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Proyectos Realizados -->
+        <section class="py-stack-xl px-margin-edge bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-outline-variant/20 pb-8">
+                    <div>
+                        <span class="font-label-caps text-tertiary-container uppercase mb-2 block">Portafolio</span>
+                        <h2 class="font-headline text-headline-lg text-on-surface">Proyectos Destacados</h2>
+                    </div>
+                    <a class="hidden md:flex items-center gap-2 font-label-caps text-primary hover:text-tertiary transition-colors uppercase mt-6 md:mt-0"
+                        href="#">
+                        Ver todos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                    <!-- Project 1 -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-[4/3] overflow-hidden bg-surface-container mb-6 shadow-lg rounded-xl">
+                            <img alt="Suite Residencial"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd_LttwykSkcMfS8waWSbmbWvuGIf2lcbwJeN_dxZgDiKQraKPY2odYkL1mGdh35_belXiliLr6huE1m1qxwGOG-tkejrzvbNBcG20CVFqHwx0-C5UTBZBOHL4_8Vub5CWs7EFa_BkICpiYixbciIKx8mbvIVLSU2QBA0kBDumhlnlXSVqD_zWcvF_jaHvfWK6MhZcWWWy_u8MGRNXWSCBk8oT4qu5Y16JNC_Ba9fyEWIxuObJtqLk80JFNpQ0CbNU9f0Cziq7rbBQ" />
+                        </div>
+                        <h3 class="font-headline text-headline-sm text-on-surface mb-1">Suite Residencial</h3>
+                        <p class="font-body text-sm text-on-surface-variant">Elegancia atemporal con sistemas de
+                            oscurecimiento inteligentes que transforman el descanso en una experiencia de lujo.</p>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="group cursor-pointer md:mt-24">
+                        <div class="aspect-[4/3] overflow-hidden bg-surface-container mb-6 shadow-lg rounded-xl">
+                            <img alt="Loft Miraflores"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFGwvM-JN0BvlmGldStZV8MDY_VAfdvCkkWPycYyzwHXUyU_mVZCmy_bSdjU2Ay50Elu2Ixdvn0HZWKIP1tQrrspgFXSR3kLGyL1yypTi1G6hAPc2zbuyyHYptPN0SymmMss9L0Nql_u5A5-VN3L2bRMzc5fTB1Kvb18qrQCuiE2mWa08T_eUmALyOws93R_xL9I9KvLu-W7itl-ViHFs0fknRGDBSVVo3ypVp7O76IdmP9P4sjbuEB4XlAWtMhh0ZywnXsz_T8dZW" />
+                        </div>
+                        <h3 class="font-headline text-headline-sm text-on-surface mb-1">Loft Miraflores</h3>
+                        <p class="font-body text-sm text-on-surface-variant">Sofisticación urbana con texturas
+                            aterciopeladas y un manejo magistral de la privacidad y el estilo.</p>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-[4/3] overflow-hidden bg-surface-container mb-6 shadow-lg rounded-xl">
+                            <img alt="Acentos de Autor"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuClYko3YW5Ueezr-b4kY-xpKNtYfXbxeAgK4Te9g_a-PgKeZrRbYkdSJibhOtBQUd6chUpQjZ27enQyE_flej0IpbNIY1ybKCj9RM8Ihk6JogQGR2XyoRbDafL9DJUcgaD-SQLbY1ROQWAkCqc0u9P_-JtzdX-DU5mVYIRJAMKnpZyQSGKrBNDYZcub4VmRls9zbEYPoSUULj5DY0ZJu4rY5695M10knPw3q0rnfpDHAh8-hfAXOFAKaLlANj_00hf98OGwk-3ics2F" />
+                        </div>
+                        <h3 class="font-headline text-headline-sm text-on-surface mb-1">Acentos de Autor</h3>
+                        <p class="font-body text-sm text-on-surface-variant">Curaduría técnica y estética en cada pieza
+                            de tapicería, elevando el mobiliario a la categoría de arte.</p>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="group cursor-pointer md:mt-24">
+                        <div class="aspect-[4/3] overflow-hidden bg-surface-container mb-6 shadow-lg rounded-xl">
+                            <img alt="Atelier Contemporáneo"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_3sTkeH8sBV_xRexiXI87hcDiLue_RUlyD5MSDV9IswQcE7kaoQtGFVV8B5Q7Fo8bjAYRdqOwar3KvG4bwO-cAr-HwkXUZ38jderPKurrDVgdIocFQ0LJCLzWTmPjnH0Qlrdt6LE3op0mx0_D-v5qoiLbG0LCeCIp4Xw775rH4Vd1dq0I90ZbA3OCMb_Zsmuen5A-wTtwmutrfMlMYB2GgH7sjmQRRV5-I-SVCVtJQ-PBnrKbwCxXA5YxMGBkcEhaU7HFyX2SLyrS" />
+                        </div>
+                        <h3 class="font-headline text-headline-sm text-on-surface mb-1">Atelier Contemporáneo</h3>
+                        <p class="font-body text-sm text-on-surface-variant">Equilibrio perfecto entre funcionalidad y
+                            precisión técnica, diseñado para inspirar en cada rincón del hogar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- BottomNavBar (Shared Component) -->
+    <nav class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+        <a class="bg-primary text-on-primary rounded-xl p-4 shadow-lg hover:bg-tertiary hover:scale-110 transition-all scale-90 active:scale-100 flex items-center gap-2 group"
+            href="#cotizar">
+            <span
+                class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 font-label-caps">COTIZAR</span>
+            <span class="material-symbols-outlined">request_quote</span>
+        </a>
+    </nav>
+    <!-- Footer (Shared Component) -->
+    <footer class="w-full bg-surface-container-low border-t border-tertiary-container/20">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-margin-edge py-stack-xl max-w-7xl mx-auto">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-3 mb-6"><img alt="Deco Nice Boutique"
+                        class="h-10 w-auto object-contain rounded-lg shadow-sm" src="image/logodeconice.png" /><span
+                        class="font-headline text-headline-sm text-primary font-bold">Deco Nice</span></div>
+                <p class="font-body text-on-surface-variant max-w-md mb-8">Sofisticación técnica que transforma la luz
+                    en una caricia para tus ambientes, brindando privacidad con una transparencia sublime.</p>
+                <div class="flex gap-6 mt-8">
+                    <a class="flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-300 group"
+                        href="https://www.facebook.com/share/1DEXhJYu3q/" target="_blank" rel="noopener noreferrer">
+                        <span class="material-symbols-outlined text-xl">facebook</span>
+                        <span class="font-body text-sm uppercase tracking-widest">Facebook</span>
+                    </a>
+                    <a class="flex items-center gap-2 text-secondary hover:text-primary transition-colors duration-300 group"
+                        href="https://www.instagram.com/deco_nice_peru/" target="_blank" rel="noopener noreferrer">
+                        <span class="material-symbols-outlined text-xl">photo_camera</span>
+                        <span class="font-body text-sm uppercase tracking-widest">Instagram</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-label-caps text-primary uppercase mb-8">Empresa</h4>
+                <ul class="flex flex-col gap-4">
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="cobertura.html">Cobertura Nacional</a></li>
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="galeria_proyectos.html">Proyectos Realizados</a></li>
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="contacto.html">Showroom & Ubicación</a></li>
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="cotizar.html">Cotización Directa</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-label-caps text-primary uppercase mb-8">Servicios</h4>
+                <ul class="flex flex-col gap-4">
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="catalogo.html">Catálogo Completo</a></li>
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="cotizar.html">Asesoría a Domicilio</a></li>
+                    <li><a class="font-body text-secondary hover:text-primary transition-colors"
+                            href="contacto.html">Atención al Cliente</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('topNav');
+            if (nav && window.scrollY > 50) {
+                nav.classList.add('shadow-sm');
+            } else if (nav) {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+-- Esquema SQL para Deco Nice
+-- Incluye tablas para cotizaciones, reclamaciones, galería y seguridad
+
+CREATE TABLE IF NOT EXISTS `configuracion` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `clave` VARCHAR(50) UNIQUE NOT NULL,
+  `valor` TEXT
+);
+
+CREATE TABLE IF NOT EXISTS `usuarios_admin` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `usuario` VARCHAR(50) UNIQUE NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `intentos_fallidos` INT DEFAULT 0,
+  `ultimo_intento` DATETIME,
+  `totp_secret` VARCHAR(32),
+  `activo` TINYINT(1) DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS `cotizaciones` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `producto_categoria` VARCHAR(100),
+  `medidas` VARCHAR(255),
+  `departamento` VARCHAR(100),
+  `distrito` VARCHAR(100),
+  `nombre` VARCHAR(100),
+  `celular` VARCHAR(20),
+  `email` VARCHAR(100),
+  `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `ip_origen` VARCHAR(45)
+);
+
+CREATE TABLE IF NOT EXISTS `reclamaciones` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `nro_reclamacion` VARCHAR(20) UNIQUE NOT NULL,
+  `nombre_completo` VARCHAR(255),
+  `dni` VARCHAR(20),
+  `email` VARCHAR(100),
+  `detalle` TEXT,
+  `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `log_seguridad` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `ip` VARCHAR(45),
+  `evento` VARCHAR(255),
+  `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insertar usuario admin inicial (Password: Admin123! - DEBE CAMBIARSE)
+-- INSERT INTO usuarios_admin (usuario, password) VALUES ('admin', '$2y$10$YourHashedPasswordHere');
